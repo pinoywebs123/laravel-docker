@@ -6,16 +6,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: php
+    image: digitalocean.com/php
     container_name: app
     restart: unless-stopped
     tty: true
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
-    working_dir: /
+    working_dir: /app/public
     volumes:
-       - ./:/
+       - ./:/var/www
        - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
@@ -30,7 +30,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/
+      - ./:/app/public
       - ./nginx/conf.d/:/etc/nginx/conf.d/  
     networks:
       - app-network
