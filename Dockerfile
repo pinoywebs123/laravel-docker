@@ -1,10 +1,10 @@
 FROM php:7.2-fpm
 
 # Copy composer.lock and composer.json
-COPY composer.lock composer.json /var/www/
+COPY composer.lock composer.json /
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR /
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
